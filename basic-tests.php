@@ -16,3 +16,7 @@ class Danger { public function danger(){}}
 $danger = new Danger();
 $danger->danger();
 
+// 5. use of backticks
+echo `test`;
+$var = 'whoami';
+echo `$var`;
