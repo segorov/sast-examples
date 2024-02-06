@@ -1,0 +1,50 @@
+custom_rules:
+  - id: 1
+    description: static exec
+    severity: high
+    cwe: []
+    fix_analysis: fix it
+    rule_code: >-
+      Taint<And<HasArg0<"Danger">, CallExpression<"danger">>, PRED:SqliSanitizer, And<HasArg0<"CMD">, CallExpression<"subrun">>>
+    languages:
+      - php
+
+  - id: 2
+    description: just danger
+    severity: high
+    cwe: []
+    fix_analysis: UNDANGER
+    rule_code: >-
+      CallExpression<"danger">
+    languages:
+      - php
+
+  - id: 3
+    description: danger class danger
+    severity: high
+    cwe: []
+    fix_analysis: danger unclass danger
+    rule_code: >-
+      And<HasArg0<"Danger">, CallExpression<"danger">>
+    languages:
+      - php
+
+  - id: 4
+    description: dangerexec
+    severity: high
+    cwe: []
+    fix_analysis: danger unclass danger
+    rule_code: >-
+      And<CallExpression<"dangerexec">, Not<HasArg1<StringLiteral<PRED:Any>>>>
+    languages:
+      - php
+
+  - id: 5
+    description: runcmd
+    severity: high
+    cwe: []
+    fix_analysis: runcmd
+    rule_code: >-
+      And<HasArg0<"CMD">, CallExpression<"subrun">>
+    languages:
+      - php
